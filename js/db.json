@@ -1,0 +1,38 @@
+[
+  {
+    "nombre": "Escherichia coli",
+    "tipo": "Bacteria",
+    "caracteristicas": ["Gram negativa", "Produce toxinas", "Causa infecciones urinarias"],
+    "tratamiento": ["Ceftriaxona", "Amoxicilina"]
+  },
+  {
+    "nombre": "Staphylococcus aureus",
+    "tipo": "Bacteria",
+    "caracteristicas": ["Gram positiva", "Resistente a la meticilina", "Infecciones cutáneas"],
+    "tratamiento": ["Vancomicina", "Clindamicina"]
+  },
+  {
+    "nombre": "Candida albicans",
+    "tipo": "Hongo",
+    "caracteristicas": ["Oportunista", "Causa candidiasis", "Presente en flora normal"],
+    "tratamiento": ["Anfotericina B", "Fluconazol"]
+  },
+  {
+    "nombre": "Influenza A",
+    "tipo": "Virus",
+    "caracteristicas": ["ARN monocatenario", "Altamente contagioso", "Mutación rápida"],
+    "tratamiento": ["Oseltamivir", "Zanamivir"]
+  },
+  {
+    "nombre": "Mycobacterium tuberculosis",
+    "tipo": "Bacteria",
+    "caracteristicas": ["Bacilo ácido-alcohol resistente", "Causa tuberculosis"],
+    "tratamiento": ["Isoniazida", "Rifampicina", "Etambutol"]
+  },
+  {
+    "nombre": "Salmonella enterica",
+    "tipo": "Bacteria",
+    "caracteristicas": ["Gram negativa", "Causa fiebre tifoidea y gastroenteritis"],
+    "tratamiento": ["Ciprofloxacino", "Azitromicina"]
+  }
+]

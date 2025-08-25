@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exterminador Microbiano</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="header">
+    <h1>🦠 Exterminador Microbiano</h1>
+    <p>Controla, analiza y elimina amenazas microscópicas</p>
+  </header>
+
+  <!-- Estado de conexión -->
+  <div id="estado-conexion" class="estado-conexion">
+    🔄 Verificando conexión con la base de datos...
+  </div>
+
+  <!-- Panel de Control -->
+  <section class="panel-control">
+    <div class="botones-control">
+      <button id="btn-iniciar" class="btn">▶️ Iniciar</button>
+      <button id="btn-pausar" class="btn">⏸️ Pausar</button>
+      <button id="btn-continuar" class="btn">▶️ Continuar</button>
+      <button id="btn-generar-campo" class="btn">⚔️ Generar Campo</button>
+    </div>
+
+    <div class="control-extra">
+      <select id="selector-medicamentos" class="selector"></select>
+      <div id="info-microbio" class="info-microbio"></div>
+    </div>
+  </section>
+
+  <!-- Panel de Listados -->
+  <section class="panel-listados">
+    <div class="lista-grupo">
+      <h3>🧫 Microorganismos</h3>
+      <ul id="lista-microorganismos"></ul>
+    </div>
+    <div class="lista-grupo">
+      <h3>💊 Medicamentos</h3>
+      <ul id="lista-medicamentos"></ul>
+    </div>
+    <div class="lista-grupo">
+      <h3>🔬 Pruebas</h3>
+      <ul id="lista-pruebas"></ul>
+    </div>
+  </section>
+
+  <!-- Área de Juego -->
+  <section class="area-juego">
+    <canvas id="juegoCanvas" width="800" height="600"></canvas>
+  </section>
+
+  <!-- Scripts -->
+  <script type="module" src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Script de conexión y carga automática -->
+  <script>
+    const API_BASE = "https://tu-backend.onrender.com"; // Cambia a tu URL real de Node.js
+
+    async function cargarListados() {
+      const estado = document.getElementById("estado-conexion");
+      try {
+        // Llamadas paralelas a tu backend
+        const [resMicro, resMeds, resPruebas] = await Promise.all([
+          fetch(`${API_BASE}/microbios`),
+          fetch(`${API_BASE}/medicamentos`),
+          fetch(`${API_BASE}/pruebas`)
+        ]);
+
+        if (!resMicro.ok || !resMeds.ok || !resPruebas.ok) {
+          throw new Error("No se pudo conectar al backend");
+        }
+
+        // Convertir en JSON
+        const microbios = await resMicro.json();
+        const medicamentos = await resMeds.json();
+        const pruebas = await resPruebas.json();
+
+        // Pintar listas
+        llenarLista("lista-microorganismos", microbios, "nombre");
+        llenarLista("lista-medicamentos", medicamentos, "nombre");
+        llenarLista("lista-pruebas", pruebas, "nombre");
+
+        // Estado de conexión
+        estado.textContent = "✅ Conectado a la base de datos";
+        estado.style.color = "green";
+
+      } catch (error) {
+        console.error("Error de conexión:", error);
+        const estado = document.getElementById("estado-conexion");
+        estado.textContent = "❌ Error de conexión con la base de datos";
+        estado.style.color = "red";
+      }
+    }
+
+    function llenarLista(idLista, datos, campo) {
+      const lista = document.getElementById(idLista);
+      lista.innerHTML = "";
+      if (Array.isArray(datos)) {
+        datos.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item[campo] || "Sin nombre";
+          lista.appendChild(li);
+        });
+      }
+    }
+
+    // Ejecutar al cargar la página
+    document.addEventListener("DOMContentLoaded", cargarListados);
+  </script>
+</body>
+</html>

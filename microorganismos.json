@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Escherichia coli",
+    "tipo": "bacteria",
+    "descripcion": "Bacteria gram negativa intestinal, sensible a cefalosporinas.",
+    "tratamientos": ["Ceftriaxona", "Ciprofloxacina"]
+  },
+  {
+    "nombre": "Candida albicans",
+    "tipo": "hongo",
+    "descripcion": "Hongo oportunista común en inmunodeprimidos.",
+    "tratamientos": ["Fluconazol", "Anfotericina B"]
+  },
+  {
+    "nombre": "Plasmodium falciparum",
+    "tipo": "parasito",
+    "descripcion": "Agente causal de la malaria severa.",
+    "tratamientos": ["Artemisinina", "Cloroquina"]
+  },
+  {
+    "nombre": "Virus de la gripe",
+    "tipo": "virus",
+    "descripcion": "Virus RNA de la influenza estacional.",
+    "tratamientos": ["Oseltamivir"]
+  }
+]
