@@ -18,7 +18,3 @@ export function aplicarMedicamento(enemigo, indiceEnemigo) {
   } else {
     console.log(`❌ ${med} NO es efectivo contra ${enemigo.nombre}`);
     // Aquí puedes añadir efectos visuales o daño adicional
-
-    
-  }
-}

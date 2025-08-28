@@ -13,6 +13,9 @@ export class Enemigo {
   actualizar() {
     this.x += this.dx;
     this.y += this.dy;
+    // Rebote en los bordes del canvas
+    if (this.x < this.radio || this.x > 800 - this.radio) this.dx *= -1;
+    if (this.y < this.radio || this.y > 600 - this.radio) this.dy *= -1;
   }
   dibujar(ctx) {
     const colores = {
@@ -36,8 +39,8 @@ export function generarEnemigos(cantidad, maxX, maxY) {
     enemigos.push(new Enemigo(
       'Microbio-' + i,
       tipo,
-      Math.random() * maxX,
-      Math.random() * maxY,
+      Math.random() * (maxX - 24) + 12,
+      Math.random() * (maxY - 24) + 12,
       Math.random() * 2 - 1,
       Math.random() * 2 - 1
     ));

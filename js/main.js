@@ -2,12 +2,20 @@
 import { Jugador } from './jugador.js';
 import { enemigos, generarEnemigos } from './enemigo.js';
 import { proyectiles } from './proyectiles.js';
-import { crearSelectorMedicamentos } from './uiSelectorMedicamentos.js';
-import { mostrarInfoMicrobio } from './uiMicrobioInfo.js';
+import { crearSelectorMedicamentos } from './backend/uiSelectorMedicamentos.js';
+import { mostrarInfoMicrobio } from './backend/uiMicrobioInfo.js';
 import { detectarColisiones } from './colisiones.js';
 import { iniciarJuego, pausarJuego, continuarJuego, generarCampo } from './juego.js';
-import { cargarListados } from './listados.js';
+import { cargarListados } from './backend/listados.js';
 import { mostrarInfoMicrobioFlotante } from './ui/tarjetaMicrobio.js';
+import { iniciarJuego, pausarJuego, continuarJuego, generarCampo } from './juego.js';
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn-iniciar').onclick = iniciarJuego;
+  document.getElementById('btn-pausar').onclick = pausarJuego;
+  document.getElementById('btn-continuar').onclick = continuarJuego;
+  document.getElementById('btn-generar-campo').onclick = generarCampo;
+});
 
 // URL del backend (cambia por tu dominio real en la nube)
 const BACKEND_URL = 'https://tu-backend.onrender.com';

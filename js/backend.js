@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+
 // Modelos
 const Microbio = require('./models/Microbio');
 const Medicamento = require('./models/Medicamento');
